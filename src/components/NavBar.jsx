@@ -8,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { auth } from '../server/firebase-config';
 import { signOut } from 'firebase/auth';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function NavBar(){
 
@@ -19,6 +20,8 @@ function NavBar(){
             .then(() => {
 
                 console.log("signed out")
+
+                window.location.reload()
 
             })
 

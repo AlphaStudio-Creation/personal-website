@@ -84,5 +84,5 @@ createRoot(document.getElementById('root')).render(
     <NavBar></NavBar>
     <RouterProvider router={router}></RouterProvider>
     <Footer></Footer>
-  </StrictMode>,
+  </StrictMode>
 )

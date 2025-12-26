@@ -17,6 +17,12 @@ function CommunityPosts(){
 
     useEffect(() => {
 
+        if (auth.currentUser == null){
+
+            setIndicator(<Notification type="danger" message="You must logged in to submit your community post!"></Notification>)
+
+        }
+
         async function getCommunityPosts(){
 
             try {
@@ -84,22 +90,26 @@ function CommunityPosts(){
                 <p className="text-4xl font-bold text-center">Community Posts</p>
             </div>
 
-            <div className="flex justify-center mt-[2rem]">
-                <Form className="w-[90%] max-w-[30rem]" onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control type="text" placeholder="Enter title" onChange={(e) => setTitle(e.target.value)}/>
-                    </Form.Group>
+            {auth.currentUser != null ? 
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control type="text" placeholder="Enter description" onChange={(e) => setDesc(e.target.value)}/>
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Request
-                    </Button>
-                </Form>    
-            </div>
+                <div className="flex justify-center mt-[2rem]">
+                    <Form className="w-[90%] max-w-[30rem]" onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control type="text" placeholder="Enter title" onChange={(e) => setTitle(e.target.value)}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control type="text" placeholder="Enter description" onChange={(e) => setDesc(e.target.value)}/>
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Request
+                        </Button>
+                    </Form>    
+                </div>
+
+            : <></>}
 
             {(communitypostslist.length - 1) == 0 ?
 

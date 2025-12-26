@@ -23,6 +23,8 @@ function Login(){
 
                 setIndicator(<Notification type="success" message="Successfully Login!"></Notification>)
 
+                window.location.reload()
+
             })
 
         } catch(err) {
